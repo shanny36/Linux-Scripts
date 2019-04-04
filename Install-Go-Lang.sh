@@ -1,7 +1,7 @@
 cd $HOME
 ARCHITECTURE='dpkg --print-architecture'
 GOVERSION='1.12.1'
-FileName='go$GOVERSION.$ARCHITECTURE.tar.gz'
+FileName='go$GOVERSION.linux-ARCHITECTURE.tar.gz'
 wget https://dl.google.com/go/$FileName
 sudo tar -C /usr/local -xvf $FileName
 cat >> ~/.bashrc << 'EOF'
