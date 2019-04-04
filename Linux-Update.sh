@@ -39,5 +39,6 @@ fi
         
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
-        yum install epel-release -y
+        yum install epel-release haveged kernel-devel curl cron screen -y
+        yum groupinstall 'Development Tools' -y
     fi
