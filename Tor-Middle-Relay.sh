@@ -56,7 +56,28 @@ fi
   Nickname TypeYourNicknameHere
   ContactInfo TypeYourEmailHere
   DisableDebuggerAttachment 0' >> /etc/tor/torrc
+        sudo /etc/init.d/tor restart
+        sudo apt-get install tor-arm
+        sudo -u debian-tor arm
+  echo '##  Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
+-A INPUT -i lo -j ACCEPT
+      
+## allow incoming SSH      
+-A INPUT -p tcp --dport 22 -j ACCEPT
+## allow Tor ORPort, DirPort        
+-A INPUT -p tcp --dport 433 -j ACCEPT
+-A INPUT -p tcp --dport 80 -j ACCEPT
 
+## ratelimit ICMP echo, allow all others
+-A INPUT -p icmp --icmp-type echo-request -m limit --limit 2/s -j ACCEPT
+-A INPUT -p icmp --icmp-type echo-request -j DROP
+-A INPUT -p icmp -j ACCEPT
+
+## to log denied packets uncomment this line (I uncommented it for you).
+-A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -m state --state INVALID -j DROP' >> /etc/iptables/rules.v4
+        
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
         yum install epel-release haveged kernel-devel -y
