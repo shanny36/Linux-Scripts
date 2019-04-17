@@ -5,7 +5,6 @@ if [[ "$EUID" -ne 0 ]]; then
     exit
 fi
 
-
 if [ -e /etc/centos-release ]; then
     DISTRO="CentOS"
 elif [ -e /etc/debian_version ]; then
