@@ -24,7 +24,7 @@ fi
         apt-get update
         apt-get upgrade -y
         apt-get dist-upgrade -y
-        apt-get install build-essential haveged linux-headers-$(uname -r) curl cron screen -y
+        apt-get install build-essential haveged linux-headers-$(uname -r) curl -y
         apt-get autoremove -y
         apt-get clean -y
         curl -sSL https://install.pi-hole.net | bash
@@ -33,7 +33,7 @@ fi
         apt-get update
         apt-get upgrade -y
         apt-get dist-upgrade -y
-        apt-get install build-essential haveged linux-headers-$(uname -r) curl cron screen -y
+        apt-get install build-essential haveged linux-headers-$(uname -r) curl -y
         apt-get autoremove -y
         apt-get clean -y
         curl -sSL https://install.pi-hole.net | bash
