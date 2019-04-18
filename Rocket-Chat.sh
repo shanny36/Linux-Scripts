@@ -6,7 +6,9 @@ if [[ "$EUID" -ne 0 ]]; then
     exit
 fi
 
-if [ -e /etc/debian_version ]; then
+if [ -e /etc/centos-release ]; then
+    DISTRO="CentOS"
+elif [ -e /etc/debian_version ]; then
     DISTRO=$( lsb_release -is )
 else
     echo "Your distribution is not supported (yet)"
