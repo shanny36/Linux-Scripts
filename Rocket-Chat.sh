@@ -31,7 +31,26 @@ fi
         apt-get install build-essential haveged linux-headers-$(uname -r) -y
         apt-get autoremove -y
         apt-get clean -y
-
+        apt-get install dirmngr && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+        echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+        apt-get update && apt-get install -y curl && curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+        apt-get install -y build-essential mongodb-org nodejs graphicsmagick
+        sudo npm install -g inherits n && sudo n 8.11.3
+        curl -L https://releases.rocket.chat/latest/download -o /tmp/rocket.chat.tgz
+        tar -xzf /tmp/rocket.chat.tgz -C /tmp
+        cd /tmp/bundle/programs/server && npm install
+        sudo mv /tmp/bundle /opt/Rocket.Chat
+        sudo useradd -M rocketchat && sudo usermod -L rocketchat
+        sudo chown -R rocketchat:rocketchat /opt/Rocket.Chat
+        echo -e "[Unit]\nDescription=The Rocket.Chat server\nAfter=network.target remote-fs.target nss-lookup.target nginx.target mongod.target\n[Service]\nExecStart=/usr/local/bin/node /opt/Rocket.Chat/main.js\nStandardOutput=syslog\nStandardError=syslog\nSyslogIdentifier=rocketchat\nUser=rocketchat\nEnvironment=MONGO_URL=mongodb://localhost:27017/rocketchat ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/ PORT=3000\n[Install]\nWantedBy=multi-user.target" | sudo tee /lib/systemd/system/rocketchat.service
+        rm /lib/systemd/system/rocketchat.service
+        read -p "Enter Your Domain (www.example.com) please include www if your using it: "  domain	
+    echo 'MONGO_URL=mongodb://localhost:27017/rocketchat
+ROOT_URL=http://$domain:3000
+PORT=3000' >> /lib/systemd/system/rocketchat.service
+        sudo systemctl enable mongod && sudo systemctl start mongod
+        sudo systemctl enable rocketchat && sudo systemctl start rocketchat
+        
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
         yum install epel-release haveged kernel-devel -y
