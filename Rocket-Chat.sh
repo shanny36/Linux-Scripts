@@ -22,7 +22,7 @@ fi
         apt-get install build-essential haveged linux-headers-$(uname -r) snapd -y
         apt-get autoremove -y
         apt-get clean -y
-        snap install rocketchat-server -y
+        snap install rocketchat-server
 
     elif [ "$DISTRO" == "Debian" ]; then
         apt-get update
