@@ -6,7 +6,7 @@ if [[ "$EUID" -ne 0 ]]; then
     exit
 fi
 
-elif [ -e /etc/debian_version ]; then
+if [ -e /etc/debian_version ]; then
     DISTRO=$( lsb_release -is )
 else
     echo "Your distribution is not supported (yet)"
