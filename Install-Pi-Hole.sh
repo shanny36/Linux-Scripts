@@ -39,7 +39,7 @@ fi
         
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
-        yum install epel-release haveged kernel-devel curl cron screen -y
+        yum install epel-release haveged kernel-devel curl -y
         yum groupinstall 'Development Tools' -y
         curl -sSL https://install.pi-hole.net | bash
     fi
