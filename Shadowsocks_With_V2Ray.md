@@ -2,7 +2,6 @@
 ```
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y && sudo apt-get clean && sudo apt-get install build-essential haveged -y
 sudo apt-get install linux-headers-$(uname -r)
-sudo apt-get install curl -y
 sudo apt-get install shadowsocks-libev -y
 sudo apt-get install cron -y
 sudo apt-get install screen -y
