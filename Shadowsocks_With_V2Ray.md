@@ -16,17 +16,20 @@ wget file_for_system
 tar -xvzf file_for_system
 rm file_for_system
 ```
-# Changing Limits
+
+# Server Instructions.
+
+### Changing Limits
 ```
 echo '* soft nofile 51200' >> /etc/security/limits.conf
 echo '* hard nofile 51200' >> /etc/security/limits.conf
 ulimit -n 51200
 ```
-# Removing Systemctl
+### Removing Systemctl
 ```
 rm /etc/sysctl.conf
 ```
-# Optimizing SS
+### Optimizing SS
 ```
 echo 'fs.file-max = 51200
 net.core.rmem_max = 67108864
@@ -47,12 +50,11 @@ net.ipv4.tcp_wmem = 4096 65536 67108864
 net.ipv4.tcp_mtu_probing = 1
 net.ipv4.tcp_congestion_control = hybla' >> /etc/sysctl.conf
 ```
-
+### Refresh System
 ```
 sysctl -p
 ```
-
-# Google BBR
+### Google BBR
 ```
 curl -sSL https://raw.githubusercontent.com/LiveChief/tcp-bbr-install/master/bbr.sh | bash
 uname -r
@@ -65,8 +67,7 @@ lsmod | grep bbr
 ```
 sysctl -p
 ```
-
-# Server
+### Config
 ```
 nano /etc/shadowsocks-libev/config.json
 ```
@@ -86,10 +87,14 @@ nano /etc/shadowsocks-libev/config.json
     "plugin_opts":"server"
 }
 ```
+
 # Client 
+
+### Install V2ray-Plugin
 ```
 nano /etc/shadowsocks-libev/config.json
 ```
+# Startup
 
 ```
 {
@@ -102,6 +107,7 @@ nano /etc/shadowsocks-libev/config.json
     "plugin_opts":"host=example.com"
 }
 ```
+
 # Startup Script
 ```
 nano /etc/shadowsocks-libev/ss-startup.sh
