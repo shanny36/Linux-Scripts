@@ -1,4 +1,4 @@
-# Installing Packages
+### Installing Packages
 ```
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y && sudo apt-get clean && sudo apt-get install build-essential haveged -y
 sudo apt-get install linux-headers-$(uname -r)
@@ -7,7 +7,7 @@ sudo apt-get install shadowsocks-libev -y
 sudo apt-get install cron -y
 sudo apt-get install screen -y
 ```
-# Install V2Ray
+### Install V2Ray
 ```
 cd /etc/shadowsocks-libev/
 https://github.com/shadowsocks/v2ray-plugin/releases
@@ -88,13 +88,11 @@ nano /etc/shadowsocks-libev/config.json
 }
 ```
 
-# Client 
+# Client Instructions
 
-### Install V2ray-Plugin
 ```
 nano /etc/shadowsocks-libev/config.json
 ```
-# Startup
 
 ```
 {
