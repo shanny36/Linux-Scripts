@@ -1,5 +1,4 @@
 #!/bin/bash
-#
 
 if [[ "$EUID" -ne 0 ]]; then
     echo "Sorry, you need to run this as root"
