@@ -24,16 +24,16 @@ fi
         apt-get upgrade -y
         apt-get dist-upgrade -y
         apt-get install build-essential haveged linux-headers-$(uname -r) -y
-        apt-get autoremove -y
         apt-get clean -y
+        apt-get autoremove -y
         
     elif [ "$DISTRO" == "Debian" ]; then
         apt-get update
         apt-get upgrade -y
         apt-get dist-upgrade -y
         apt-get install build-essential haveged linux-headers-$(uname -r) -y
-        apt-get autoremove -y
         apt-get clean -y
+        apt-get autoremove -y
         
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
