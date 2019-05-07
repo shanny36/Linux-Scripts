@@ -15,30 +15,40 @@ else
 fi
 
     if [ "$DISTRO" == "Ubuntu" ]; then
-        apt-get update
-        apt-get upgrade -y
-        apt-get dist-upgrade -y
-        apt-get install build-essential haveged linux-headers-$(uname -r) -y
-        apt-get clean -y
-        apt-get autoremove -y
-        sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
-        sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
-        echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf
-        echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf
-        sysctl -p
+        apt-get update > /dev/null
+        apt-get upgrade -y > /dev/null
+        apt-get dist-upgrade -y > /dev/null
+        apt-get install build-essential haveged linux-headers-$(uname -r) -y > /dev/null
+        apt-get clean -y > /dev/null
+        apt-get autoremove -y > /dev/null
+        sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf > /dev/null
+        sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf > /dev/null
+        echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf > /dev/null
+        echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf > /dev/null
+        sysctl -p > /dev/null
+        uname -r
+        sysctl net.ipv4.tcp_available_congestion_control
+        sysctl net.ipv4.tcp_congestion_control
+        sysctl net.core.default_qdisc
+        lsmod | grep bbr
         
     elif [ "$DISTRO" == "Debian" ]; then
-        apt-get update
-        apt-get upgrade -y
-        apt-get dist-upgrade -y
-        apt-get install build-essential haveged linux-headers-$(uname -r) -y
-        apt-get clean -y
-        apt-get autoremove -y
-        sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
-        sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
-        echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf
-        echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf
-        sysctl -p
+        apt-get update > /dev/null
+        apt-get upgrade -y > /dev/null
+        apt-get dist-upgrade -y > /dev/null
+        apt-get install build-essential haveged linux-headers-$(uname -r) -y > /dev/null
+        apt-get clean -y > /dev/null
+        apt-get autoremove -y > /dev/null
+        sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf > /dev/null
+        sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf > /dev/null
+        echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf > /dev/null
+        echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf > /dev/null
+        sysctl -p > /dev/null
+        uname -r
+        sysctl net.ipv4.tcp_available_congestion_control
+        sysctl net.ipv4.tcp_congestion_control
+        sysctl net.core.default_qdisc
+        lsmod | grep bbr
         
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
