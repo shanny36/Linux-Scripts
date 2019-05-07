@@ -19,6 +19,7 @@ fi
         apt-get upgrade -y > /dev/null
         apt-get dist-upgrade -y > /dev/null
         apt-get install build-essential haveged linux-headers-$(uname -r) -y > /dev/null
+        apt-get upgrade linux-generic > /dev/null
         apt-get clean -y > /dev/null
         apt-get autoremove -y > /dev/null
         sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf > /dev/null
@@ -37,6 +38,7 @@ fi
         apt-get upgrade -y > /dev/null
         apt-get dist-upgrade -y > /dev/null
         apt-get install build-essential haveged linux-headers-$(uname -r) -y > /dev/null
+        apt-get upgrade linux-base > /dev/null
         apt-get clean -y > /dev/null
         apt-get autoremove -y > /dev/null
         sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf > /dev/null
