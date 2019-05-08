@@ -14,26 +14,37 @@ else
     exit
 fi
 
-if [ "$( systemd-detect-virt )" == "openvz" ]; then
-    echo "OpenVZ virtualization is not supported"
-    exit
-fi
-
     if [ "$DISTRO" == "Ubuntu" ]; then
-        apt-get update
-        apt-get upgrade -y
-        apt-get dist-upgrade -y
-        apt-get install build-essential haveged linux-headers-$(uname -r) -y
-        apt-get clean -y
-        apt-get autoremove -y
+        echo "Updating package list..."
+        apt-get update > /dev/null
+        echo "Upgrading package list..."
+        apt-get upgrade -y > /dev/null
+        echo "Upgrading Dist list..."
+        apt-get dist-upgrade -y > /dev/null
+        echo "Build Essential..."
+        apt-get install build-essential haveged linux-headers-$(uname -r) -y > /dev/null
+        echo "Update Keneral..."
+        apt-get upgrade linux-generic -y > /dev/null
+        echo "Clean..."
+        apt-get clean -y > /dev/null
+        echo "Autoremove..."
+        apt-get autoremove -y > /dev/null
         
     elif [ "$DISTRO" == "Debian" ]; then
-        apt-get update
-        apt-get upgrade -y
-        apt-get dist-upgrade -y
-        apt-get install build-essential haveged linux-headers-$(uname -r) -y
-        apt-get clean -y
-        apt-get autoremove -y
+        echo "Updating package list..."
+        apt-get update > /dev/null
+        echo "Upgrading package list..."
+        apt-get upgrade -y > /dev/null
+        echo "Upgrading Dist list..."
+        apt-get dist-upgrade -y > /dev/null
+        echo "Build Essential..."
+        apt-get install build-essential haveged linux-headers-$(uname -r) -y > /dev/null
+        echo "Update Keneral..."
+        apt-get upgrade linux-generic -y > /dev/null
+        echo "Clean..."
+        apt-get clean -y > /dev/null
+        echo "Autoremove..."
+        apt-get autoremove -y > /dev/null
         
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
