@@ -29,7 +29,6 @@ fi
         apt-get clean -y > /dev/null
         echo "Autoremove..."
         apt-get autoremove -y > /dev/null
-        echo " 
         echo "Systemctl..."
         modprobe tcp_bbr > /dev/null
         echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
