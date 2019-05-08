@@ -24,7 +24,7 @@ fi
         echo "Build Essential..."
         apt-get install build-essential linux-headers-$(uname -r) -y > /dev/null
         echo "Update Keneral..."
-        apt-get upgrade linux-generic -y > /dev/null
+        apt-get upgrade linux-base -y > /dev/null
         echo "Clean..."
         apt-get clean -y > /dev/null
         echo "Autoremove..."
@@ -40,7 +40,7 @@ fi
         echo "Build Essential..."
         apt-get install build-essential linux-headers-$(uname -r) -y > /dev/null
         echo "Update Keneral..."
-        apt-get upgrade linux-generic -y > /dev/null
+        apt-get upgrade linux-base -y > /dev/null
         echo "Clean..."
         apt-get clean -y > /dev/null
         echo "Autoremove..."
