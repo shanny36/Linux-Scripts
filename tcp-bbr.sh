@@ -32,11 +32,12 @@ fi
         echo " 
         echo "Systemctl..."
         modprobe tcp_bbr > /dev/null
-        echo "tcp_bbr" >> /etc/modules-load.d/modules.conf > /dev/null
-        echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf > /dev/null 
-        echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf > /dev/null
+        echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
+        echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf 
+        echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
         sysctl -p > /dev/null
         uname -r
+        echo "should show your kernel verison"
         sysctl net.ipv4.tcp_available_congestion_control
         echo "Answer Should Be: net.ipv4.tcp_available_congestion_control = bbr cubic reno"
         sysctl net.ipv4.tcp_congestion_control
@@ -63,11 +64,12 @@ fi
         apt-get autoremove -y > /dev/null
         echo "Systemctl..."
         modprobe tcp_bbr > /dev/null
-        echo "tcp_bbr" >> /etc/modules-load.d/modules.conf > /dev/null
-        echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf > /dev/null 
-        echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf > /dev/null
+        echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
+        echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+        echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
         sysctl -p > /dev/null
         uname -r
+        echo "should show your kernel verison"
         sysctl net.ipv4.tcp_available_congestion_control
         echo "Answer Should Be: net.ipv4.tcp_available_congestion_control = bbr cubic reno"
         sysctl net.ipv4.tcp_congestion_control
