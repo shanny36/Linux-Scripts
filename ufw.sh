@@ -15,11 +15,6 @@ else
     exit
 fi
 
-if [ "$( systemd-detect-virt )" == "openvz" ]; then
-    echo "OpenVZ virtualization is not supported"
-    exit
-fi
-
     if [ "$DISTRO" == "Ubuntu" ]; then
         apt-get update
         apt-get upgrade -y
