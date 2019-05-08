@@ -29,11 +29,12 @@ fi
         apt-get clean -y > /dev/null
         echo "Autoremove..."
         apt-get autoremove -y > /dev/null
+        echo " 
         echo "Systemctl..."
-        sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf > /dev/null
-        sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf > /dev/null
-        echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf > /dev/null
-        echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf > /dev/null
+        modprobe tcp_bbr > /dev/null
+        echo "tcp_bbr" >> /etc/modules-load.d/modules.conf > /dev/null
+        echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf > /dev/null 
+        echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf > /dev/null
         sysctl -p > /dev/null
         uname -r
         sysctl net.ipv4.tcp_available_congestion_control
@@ -61,10 +62,10 @@ fi
         echo "Autoremove..."
         apt-get autoremove -y > /dev/null
         echo "Systemctl..."
-        sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf > /dev/null
-        sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf > /dev/null
-        echo "net.core.default_qdisc = fq" >> /etc/sysctl.conf > /dev/null
-        echo "net.ipv4.tcp_congestion_control = bbr" >> /etc/sysctl.conf > /dev/null
+        modprobe tcp_bbr > /dev/null
+        echo "tcp_bbr" >> /etc/modules-load.d/modules.conf > /dev/null
+        echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf > /dev/null 
+        echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf > /dev/null
         sysctl -p > /dev/null
         uname -r
         sysctl net.ipv4.tcp_available_congestion_control
