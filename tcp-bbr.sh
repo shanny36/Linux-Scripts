@@ -15,6 +15,20 @@ else
 fi
 
     if [ "$DISTRO" == "Ubuntu" ]; then
+        echo "Updating package list..."
+        apt-get update > /dev/null
+        echo "Upgrading package list..."
+        apt-get upgrade -y > /dev/null
+        echo "Upgrading Dist list..."
+        apt-get dist-upgrade -y > /dev/null
+        echo "Build Essential..."
+        apt-get install build-essential linux-headers-$(uname -r) -y > /dev/null
+        echo "Update Keneral..."
+        apt-get upgrade linux-base -y > /dev/null
+        echo "Clean..."
+        apt-get clean -y > /dev/null
+        echo "Autoremove..."
+        apt-get autoremove -y > /dev/null
         echo "Systemctl..."
         modprobe tcp_bbr > /dev/null
         echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
@@ -33,6 +47,20 @@ fi
         echo "Answer Should Be: tcp_bbr Modugle Started"
         
     elif [ "$DISTRO" == "Debian" ]; then
+        echo "Updating package list..."
+        apt-get update > /dev/null
+        echo "Upgrading package list..."
+        apt-get upgrade -y > /dev/null
+        echo "Upgrading Dist list..."
+        apt-get dist-upgrade -y > /dev/null
+        echo "Build Essential..."
+        apt-get install build-essential linux-headers-$(uname -r) -y > /dev/null
+        echo "Update Keneral..."
+        apt-get upgrade linux-base -y > /dev/null
+        echo "Clean..."
+        apt-get clean -y > /dev/null
+        echo "Autoremove..."
+        apt-get autoremove -y > /dev/null
         echo "Systemctl..."
         modprobe tcp_bbr > /dev/null
         echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
