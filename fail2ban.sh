@@ -19,14 +19,16 @@ fi
         apt-get update > /dev/null
         echo "Install Fail2Ban..."
         apt-get install build-essential haveged linux-headers-$(uname -r) fail2ban -y > /dev/null
-        cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+        systemctl start fail2ban
+        systemctl enable fail2ban
         
     elif [ "$DISTRO" == "Debian" ]; then
         echo "Updating package list..."
         apt-get update > /dev/null
         echo "Install Fail2Ban..."
         apt-get install build-essential haveged linux-headers-$(uname -r) fail2ban -y > /dev/null
-        cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+        systemctl start fail2ban
+        systemctl enable fail2ban
         
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
