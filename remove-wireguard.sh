@@ -15,12 +15,12 @@ else
 fi
 
     if [ "$DISTRO" == "Ubuntu" ]; then
-        apt-get remove --purge wireguard* -y
+        apt-get remove --purge wireguard -y
         rm -rf etc/wireguard
         rm /etc/wireguard/wg0.conf
         
     elif [ "$DISTRO" == "Debian" ]; then
-        apt-get remove --purge wireguard* -y
+        apt-get remove --purge wireguard -y
         rm -rf etc/wireguard
         rm /etc/wireguard/wg0.conf
         
