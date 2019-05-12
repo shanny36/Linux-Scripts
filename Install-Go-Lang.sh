@@ -1,6 +1,6 @@
 cd $HOME
 dpkg --print-architecture
-FileName='https://golang.org/dl/'
+FileName='https://golang.org/dl/$FileName'
 wget https://dl.google.com/go/$FileName
 sudo tar -C /usr/local -xvf $FileName
 cat >> ~/.bashrc << 'EOF'
