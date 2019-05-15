@@ -22,9 +22,7 @@ fi
         echo "Upgrading Dist list..."
         apt-get dist-upgrade -y > /dev/null
         echo "Build Essential..."
-        apt-get install build-essential linux-headers-$(uname -r) -y > /dev/null
-        echo "Update Keneral..."
-        apt-get upgrade linux-base -y > /dev/null
+        apt-get install build-essential linux-headers-$(uname -r) haveged  -y > /dev/null
         echo "Clean..."
         apt-get clean -y > /dev/null
         echo "Autoremove..."
@@ -38,9 +36,7 @@ fi
         echo "Upgrading Dist list..."
         apt-get dist-upgrade -y > /dev/null
         echo "Build Essential..."
-        apt-get install build-essential linux-headers-$(uname -r) -y > /dev/null
-        echo "Update Keneral..."
-        apt-get upgrade linux-base -y > /dev/null
+        apt-get install build-essential linux-headers-$(uname -r) haveged  -y > /dev/null
         echo "Clean..."
         apt-get clean -y > /dev/null
         echo "Autoremove..."
