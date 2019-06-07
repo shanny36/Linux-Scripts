@@ -15,7 +15,7 @@ elif [ -e /etc/fedora-release ]; then
     DISTRO="Fedora"
 elif [ -e /etc/redhat-release ]; then
     DISTRO="Redhat"
-    echo "Your distribution is not supported (yet)"
+echo "Your distribution is not supported (yet)."
     exit
 fi
 
