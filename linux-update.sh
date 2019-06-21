@@ -32,7 +32,7 @@ function dist-check() {
 dist-check
 
 ## Start Installation
-function install-updates
+function install-updates() {
     if [ "$DISTRO" == "Debian" ]; then
       apt-get update
       apt-get upgrade -y
