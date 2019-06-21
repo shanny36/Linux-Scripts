@@ -67,3 +67,6 @@ function install-updates
       dnf update -y
     fi
 }
+
+## Install Update
+install-updates
