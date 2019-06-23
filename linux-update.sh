@@ -33,39 +33,39 @@ dist-check
 
 ## Start Installation
 function install-updates() {
-    if [ "$DISTRO" == "Debian" ]; then
-      apt-get update
-      apt-get upgrade -y
-      apt-get dist-upgrade -y
-      apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges -y
-      wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/LiveChief/unattended-upgrades/master/config/50unattended-upgrades"
-      apt-get clean -y
-      apt-get autoremove -y
-    elif [ "$DISTRO" == "Ubuntu" ]; then
-      apt-get update
-      apt-get upgrade -y
-      apt-get dist-upgrade -y
-      apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges -y
-      wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/LiveChief/unattended-upgrades/master/config/50unattended-upgrades"
-      apt-get clean -y
-      apt-get autoremove -y
-    elif [ "$DISTRO" == "Raspbian" ]; then
-      apt-get update
-      apt-get upgrade -y
-      apt-get dist-upgrade -y
-      apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges -y
-      wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/LiveChief/unattended-upgrades/master/config/50unattended-upgrades"
-      apt-get clean -y
-      apt-get autoremove -y
-    elif [ "$DISTRO" == "CentOS" ]; then
-      yum update -y
-      yum install epel-release haveged kernel-devel -y
-      yum groupinstall 'Development Tools' -y
-    elif [ "$DISTRO" == "Fedora" ]; then
-      dnf update
-    elif [ "$DISTRO" == "Redhat" ]; then
-      dnf update -y
-    fi
+if [ "$DISTRO" == "Debian" ]; then
+    apt-get update
+    apt-get upgrade -y
+    apt-get dist-upgrade -y
+    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges -y
+    wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/LiveChief/unattended-upgrades/master/config/50unattended-upgrades"
+    apt-get clean -y
+    apt-get autoremove -y
+elif [ "$DISTRO" == "Ubuntu" ]; then
+    apt-get update
+    apt-get upgrade -y
+    apt-get dist-upgrade -y
+    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges -y
+    wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/LiveChief/unattended-upgrades/master/config/50unattended-upgrades"
+    apt-get clean -y
+    apt-get autoremove -y
+elif [ "$DISTRO" == "Raspbian" ]; then
+    apt-get update
+    apt-get upgrade -y
+    apt-get dist-upgrade -y
+    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges -y
+    wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/LiveChief/unattended-upgrades/master/config/50unattended-upgrades"
+    apt-get clean -y
+    apt-get autoremove -y
+elif [ "$DISTRO" == "CentOS" ]; then
+    yum update -y
+    yum install epel-release haveged kernel-devel -y
+    yum groupinstall 'Development Tools' -y
+elif [ "$DISTRO" == "Fedora" ]; then
+    dnf update -y
+elif [ "$DISTRO" == "Redhat" ]; then
+    dnf update -y
+fi
 }
 
 ## Install Update
