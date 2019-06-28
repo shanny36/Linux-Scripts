@@ -35,6 +35,7 @@ dist-check
 function install-ssh() {
 if [ "$DISTRO" == "Debian" ]; then
     cd ~
+    rm ~/.ssh/authorized_keys
     pwd
     mkdir .ssh
     cd .ssh
@@ -46,6 +47,7 @@ if [ "$DISTRO" == "Debian" ]; then
     sudo /etc/init.d/ssh restart
 elif [ "$DISTRO" == "Ubuntu" ]; then
     cd ~
+    rm ~/.ssh/authorized_keys
     pwd
     mkdir .ssh
     cd .ssh
@@ -57,6 +59,7 @@ elif [ "$DISTRO" == "Ubuntu" ]; then
     sudo /etc/init.d/ssh restart
 elif [ "$DISTRO" == "Raspbian" ]; then
     cd ~
+    rm ~/.ssh/authorized_keys
     pwd
     mkdir .ssh
     cd .ssh
@@ -68,6 +71,7 @@ elif [ "$DISTRO" == "Raspbian" ]; then
     sudo /etc/init.d/ssh restart
 elif [ "$DISTRO" == "CentOS" ]; then
     cd ~
+    rm ~/.ssh/authorized_keys
     pwd
     mkdir .ssh
     cd .ssh
@@ -79,6 +83,7 @@ elif [ "$DISTRO" == "CentOS" ]; then
     sudo /etc/init.d/ssh restart
 elif [ "$DISTRO" == "Fedora" ]; then
     cd ~
+    rm ~/.ssh/authorized_keys
     pwd
     mkdir .ssh
     cd .ssh
@@ -90,6 +95,7 @@ elif [ "$DISTRO" == "Fedora" ]; then
     sudo /etc/init.d/ssh restart
 elif [ "$DISTRO" == "Redhat" ]; then
     cd ~
+    rm ~/.ssh/authorized_keys
     pwd
     mkdir .ssh
     cd .ssh
