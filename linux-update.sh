@@ -63,8 +63,10 @@ elif [ "$DISTRO" == "CentOS" ]; then
     yum groupinstall 'Development Tools' -y
 elif [ "$DISTRO" == "Fedora" ]; then
     dnf update -y
+    dnf install build-essential linux-headers-$(uname -r) haveged -y
 elif [ "$DISTRO" == "Redhat" ]; then
     dnf update -y
+    dnf install build-essential linux-headers-$(uname -r) haveged -y
 fi
 }
 
