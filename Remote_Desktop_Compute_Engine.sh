@@ -67,7 +67,7 @@ function dist-check() {
 dist-check
 
 ## Start Installation Of SSH
-if [ "$DISTRO" == "Ubuntu" ]; then
+if [ "$DISTRO" == "Debian" ]; then
   wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
   sudo apt update
   sudo dpkg --install chrome-remote-desktop_current_amd64.deb
