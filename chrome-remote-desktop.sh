@@ -66,9 +66,8 @@ function dist-check() {
 ## Check distro
 dist-check
 
-function install-remote-desktop-on-compute-engine() {
-## Start Installation Of SSH
-if [ "$DISTRO" == "Debian" ]; then
+function remote-desktop-compute() {
+  if [ "$DISTRO" == "Debian" ]; then
   wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
   sudo apt update
   sudo dpkg --install chrome-remote-desktop_current_amd64.deb
@@ -100,8 +99,8 @@ elif [ "$DISTRO" == "Ubuntu" ]; then
   sudo apt install --assume-yes --fix-broken
   echo "GO TO https://remotedesktop.google.com/headless"
   echo "Run that command here"
-fi
+  fi
 }
 
 ## Run the command
-install-remote-desktop-on-compute-engine
+remote-desktop-compute
