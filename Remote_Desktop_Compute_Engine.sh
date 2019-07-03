@@ -66,6 +66,7 @@ function dist-check() {
 ## Check distro
 dist-check
 
+function install_remote_desktop_compute_engine () {
 ## Start Installation Of SSH
 if [ "$DISTRO" == "Debian" ]; then
   wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
@@ -100,9 +101,7 @@ elif [ "$DISTRO" == "Ubuntu" ]; then
   echo "GO TO https://remotedesktop.google.com/headless"
   echo "Run that command here"
 fi
+}
 
 ## Run the command
-install_remote_desktop_compute_engine
-
-## Run the command 
 install_remote_desktop_compute_engine
