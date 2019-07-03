@@ -66,7 +66,7 @@ function dist-check() {
 ## Check distro
 dist-check
 
-function install_remote_desktop_compute_engine () {
+function install-remote-desktop-on-compute-engine() {
 ## Start Installation Of SSH
 if [ "$DISTRO" == "Debian" ]; then
   wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
@@ -104,4 +104,4 @@ fi
 }
 
 ## Run the command
-install_remote_desktop_compute_engine
+install-remote-desktop-on-compute-engine
