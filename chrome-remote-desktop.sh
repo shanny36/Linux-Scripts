@@ -1,5 +1,16 @@
 #!/bin/bash
 
+## Check Root
+function root-check() {
+  if [[ "$EUID" -ne 0 ]]; then
+    echo "Hello there non ROOT user, you need to run this as ROOT."
+    exit
+  fi
+}
+
+ ## Root Check
+root-check
+
 ## Detect OS
 function dist-check() {
   if [ -e /etc/centos-release ]; then
