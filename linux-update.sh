@@ -11,7 +11,6 @@ fi
 ## Root Check
 root-check
 
-## Detect OS
 function dist-check() {
   if [ -e /etc/centos-release ]; then
     DISTRO="CentOS"
@@ -19,6 +18,7 @@ function dist-check() {
     DISTRO=$( lsb_release -is )
   elif [ -e /etc/arch-release ]; then
     DISTRO="Arch"
+  elif [ -e /etc/fedora-release ]; then
     DISTRO="Fedora"
   elif [ -e /etc/redhat-release ]; then
     DISTRO="Redhat"
@@ -67,6 +67,8 @@ elif [ "$DISTRO" == "Fedora" ]; then
 elif [ "$DISTRO" == "Redhat" ]; then
     dnf update -y
     dnf install build-essential linux-headers-$(uname -r) haveged -y
+elif [ "$DISTRO" == "Arch" ]; then
+    pacman -S
 fi
 }
 
