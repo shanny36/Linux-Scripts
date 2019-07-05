@@ -11,7 +11,7 @@ function root-check() {
  ## Root Check
 root-check
 
-## Detect OS
+## Detect Operating System
 function dist-check() {
   if [ -e /etc/centos-release ]; then
     DISTRO="CentOS"
@@ -19,6 +19,7 @@ function dist-check() {
     DISTRO=$( lsb_release -is )
   elif [ -e /etc/arch-release ]; then
     DISTRO="Arch"
+  elif [ -e /etc/fedora-release ]; then
     DISTRO="Fedora"
   elif [ -e /etc/redhat-release ]; then
     DISTRO="Redhat"
