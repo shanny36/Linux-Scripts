@@ -122,7 +122,7 @@ enable-htacess
 
 ## Function for correct permission
 function correct-permissions() {
-cd var/www
+cd /var/www
 chown www-data:www-data  -R *
 find . -type d -exec chmod 755 {} \;
 find . -type f -exec chmod 644 {} \;
@@ -145,6 +145,12 @@ fi
 apache-restart
 
 function mysql-setup() {
+echo
+echo
+echo
+echo
+echo "------------------------------------------------------------------------------------------"
+echo "RUN THESE COMMANDS"
 echo "mysql_secure_installation"
 echo "mysql -u root -p"
 echo "CREATE DATABASE wordpress_database"
@@ -152,6 +158,7 @@ echo "CREATE USER `wordpress_database_admin`@`localhost` IDENTIFIED BY '$RANDOM_
 echo "GRANT ALL ON wordpress_database.* TO `wordpress_database_admin`@`localhost`;"
 echo "FLUSH PRIVILEGES;"
 echo "exit"
+echo "------------------------------------------------------------------------------------------"
 }
 
 # Run SQL Setup
@@ -159,10 +166,16 @@ mysql-setup
 
 ## Wordpress Replace Config
 function wordpress-config() {
+echo
+echo
+echo
+echo
+echo "------------------------------------------------------------------------------------------"
 echo "mv var/www/html/wp-config-sample.php var/www/html/wp-config.php"
 echo "sed -i 's|database_name_here|wordpress_database|'var/www/html/wp-config.php"
 echo "sed -i 's|username_here|wordpress_database_admin|'var/www/html/wp-config.php"
 echo "sed -i 's|password_here|$RANDOM_PASSWORD|'var/www/html/wp-config.php"
+echo "------------------------------------------------------------------------------------------"
 }
 
 ## Wordpress Config Function Running 
