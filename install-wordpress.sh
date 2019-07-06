@@ -131,33 +131,6 @@ find . -type f -exec chmod 644 {} \;
 ## Run correct permissions 
 correct-permissions
 
-## Get Random Password
-RANDOM_PASSWORD="$(wget -qO- -t1 -T2 https://www.random.org/passwords/?num=1&len=24&format=plain&rnd=new)"
-
-function mysql-setup() {
-sudo mysql_secure_installation
-mysql -u root -p
-CREATE DATABASE wordpress_database
-CREATE USER `wordpress_database_admin`@`localhost` IDENTIFIED BY '$RANDOM_PASSWORD';
-GRANT ALL ON wordpress_database.* TO `wordpress_database_admin`@`localhost`;
-FLUSH PRIVILEGES;
-exit
-}
-
-# Run SQL Setup
-mysql-setup
-
-## Wordpress Replace Config
-function wordpress-config() {
-mv var/www/html/wp-config-sample.php var/www/html/wp-config.php 
-sed -i 's|database_name_here|wordpress_database|'var/www/html/wp-config.php
-sed -i 's|username_here|wordpress_database_admin|'var/www/html/wp-config.php
-sed -i 's|password_here|$RANDOM_PASSWORD|'var/www/html/wp-config.php
-}
-
-## Wordpress Config Function Running 
-wordpress-config
-
 ## Restart Apache2
 function apache-restart() {
 if pgrep systemd-journal; then
@@ -170,3 +143,27 @@ fi
 
 ## Run Apache2 Restart
 apache-restart
+
+function mysql-setup() {
+echo "mysql_secure_installation"
+echo "mysql -u root -p"
+echo "CREATE DATABASE wordpress_database"
+echo "CREATE USER `wordpress_database_admin`@`localhost` IDENTIFIED BY '$RANDOM_PASSWORD';"
+echo "GRANT ALL ON wordpress_database.* TO `wordpress_database_admin`@`localhost`;"
+echo "FLUSH PRIVILEGES;"
+echo "exit"
+}
+
+# Run SQL Setup
+mysql-setup
+
+## Wordpress Replace Config
+function wordpress-config() {
+echo "mv var/www/html/wp-config-sample.php var/www/html/wp-config.php"
+echo "sed -i 's|database_name_here|wordpress_database|'var/www/html/wp-config.php"
+echo "sed -i 's|username_here|wordpress_database_admin|'var/www/html/wp-config.php"
+echo "sed -i 's|password_here|$RANDOM_PASSWORD|'var/www/html/wp-config.php"
+}
+
+## Wordpress Config Function Running 
+wordpress-config
