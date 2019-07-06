@@ -1,7 +1,7 @@
 wget https://raw.githubusercontent.com/LiveChief/Linux-Scripts/master/linux-update.sh
 bash linux-update.sh 
 
-apt-get install apache2 mysql-server php7.0 hp-curl php-gd php-mbstring php-xml php-xmlrpc php-mysql php-bcmath php-imagick
+apt-get install apache2 mysql-server php7.0 php-curl php-gd php-mbstring php-xml php-xmlrpc php-mysql php-bcmath php-imagick
 
 sudo mysql_secure_installation
 mysql -u root -p
