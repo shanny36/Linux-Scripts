@@ -80,7 +80,6 @@ function install-bbr() {
 ## Install Google BBR
 install-bbr
 
-
 ## Start Installation Of Wordpress
 function install-wordpress() {
     rm /var/www/html/index.html
