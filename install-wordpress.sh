@@ -1,7 +1,7 @@
 wget https://raw.githubusercontent.com/LiveChief/Linux-Scripts/master/linux-update.sh
 bash linux-update.sh 
 
-apt-get install apache2 mysql-server php7.0 hp-curl php-gd php-mbstring php-xml php-xmlrpc php-mysql
+apt-get install apache2 mysql-server php7.0 hp-curl php-gd php-mbstring php-xml php-xmlrpc php-mysql php-bcmath php-imagick
 
 sudo mysql_secure_installation
 mysql -u root -p
@@ -24,7 +24,7 @@ systemctl restart apache2
 
 sudo a2enmod rewrite
 
-echo "<Directory /var/www/html>
+echo "<Directory /var/www>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
         Require all granted
