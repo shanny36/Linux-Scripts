@@ -1,19 +1,39 @@
 #!/bin/bash
 
+## Sanity Checks and automagic
+function root-check() {
 if [[ "$EUID" -ne 0 ]]; then
-    echo "Sorry, you need to run this as root"
-    exit
+  echo "Sorry, you need to run this as root"
+  exit
 fi
+}
 
-if [ -e /etc/centos-release ]; then
+## Root Check
+root-check
+
+## Detect Operating System
+function dist-check() {
+  if [ -e /etc/centos-release ]; then
     DISTRO="CentOS"
-elif [ -e /etc/debian_version ]; then
+  elif [ -e /etc/debian_version ]; then
     DISTRO=$( lsb_release -is )
-else
-    echo "Your distribution is not supported (yet)"
+  elif [ -e /etc/arch-release ]; then
+    DISTRO="Arch"
+  elif [ -e /etc/fedora-release ]; then
+    DISTRO="Fedora"
+  elif [ -e /etc/redhat-release ]; then
+    DISTRO="Redhat"
+  else
+    echo "Your distribution is not supported (yet)."
     exit
-fi
+  fi
+}
 
+## Check distro
+dist-check
+
+## Start Installation
+function install-bbr() {
     if [ "$DISTRO" == "Ubuntu" ]; then
         echo "Updating package list..."
         apt-get update > /dev/null
@@ -77,9 +97,11 @@ fi
         echo "Answer Should Be: net.core.default_qdisc = fq"
         lsmod | grep bbr
         echo "Answer Should Be: tcp_bbr Modugle Started"
-        
     elif [ "$DISTRO" == "CentOS" ]; then
         yum update -y
         yum install epel-release haveged kernel-devel -y
         yum groupinstall 'Development Tools' -y
-    fi
+fi
+}
+## Install Google BBR
+install-bbr
