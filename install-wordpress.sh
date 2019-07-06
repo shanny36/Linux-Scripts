@@ -83,6 +83,7 @@ install-bbr
 
 ## Start Installation Of Wordpress
 function install-wordpress() {
+    rm /var/www/html/index.html
     cd /tmp
     wget https://wordpress.org/latest.tar.gz
     tar xf latest.tar.gz
