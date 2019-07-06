@@ -21,3 +21,25 @@ sudo dpkg -i mod-pagespeed-*.deb
 sudo apt-get -f install
 sudo apt-get install mod-pagespeed-beta
 systemctl restart apache2
+
+sudo a2enmod rewrite
+
+echo "<Directory /var/www/html>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Require all granted
+</Directory>" >> /etc/apache2/sites-available/000-default.conf
+
+systemctl restart apache2
+
+echo "<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>" >> /var/www/.htaccess
+
+systemctl restart apache2
+
