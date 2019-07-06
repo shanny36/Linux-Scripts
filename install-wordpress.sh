@@ -146,8 +146,8 @@ fi
 apache-restart
 
 function mysql-setup() {
-echo "------------------------------------------------------------------------------------------"
 echo "RUN THESE COMMANDS"
+echo "------------------------------------------------------------------------------------------"
 echo "mysql_secure_installation"
 echo "mysql -u root -p"
 echo "CREATE DATABASE wordpress_database"
@@ -163,8 +163,8 @@ mysql-setup
 
 ## Wordpress Replace Config
 function wordpress-config() {
-echo "------------------------------------------------------------------------------------------"
 echo "RUN THESE COMMANDS"
+echo "------------------------------------------------------------------------------------------"
 echo "mv var/www/html/wp-config-sample.php var/www/html/wp-config.php"
 echo "sed -i 's|database_name_here|wordpress_database|'var/www/html/wp-config.php"
 echo "sed -i 's|username_here|wordpress_database_admin|'var/www/html/wp-config.php"
