@@ -123,7 +123,7 @@ enable-htacess
 
 ## Function for correct permission
 function correct-permissions() {
-cd /var/www
+cd /var/www/
 chown www-data:www-data  -R *
 find . -type d -exec chmod 755 {} \;
 find . -type f -exec chmod 644 {} \;
