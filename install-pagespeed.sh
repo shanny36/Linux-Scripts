@@ -37,22 +37,27 @@ function install-bbr() {
     wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
     sudo dpkg -i mod-pagespeed-*.deb
     sudo apt-get -f install
+    rm mod-pagespeed-stable_current_amd64.deb
   elif [ "$DISTRO" == "Debian" ]; then
     wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
     sudo dpkg -i mod-pagespeed-*.deb
     sudo apt-get -f install
+    rm mod-pagespeed-stable_current_amd64.deb
   elif [ "$DISTRO" == "Rasbian" ]; then
     wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
     sudo dpkg -i mod-pagespeed-*.deb
     sudo apt-get -f install
+    rm mod-pagespeed-stable_current_amd64.deb
   elif [ "$DISTRO" == "CentOS" ]; then
     wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_x86_64.rpm
-    sudo dpkg -i mod-pagespeed-*.deb
+    sudo dpkg -i mod-pagespeed-*.deb -y
     sudo apt-get -f install
+    rm mod-pagespeed-stable_current_amd64.deb
   elif [ "$DISTRO" == "Fedora" ]; then
     wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_x86_64.rpm
     sudo dpkg -i mod-pagespeed-*.deb
     sudo apt-get -f install
+    rm mod-pagespeed-stable_current_amd64.deb
   fi
 }
 
