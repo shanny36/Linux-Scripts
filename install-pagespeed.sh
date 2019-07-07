@@ -31,28 +31,33 @@ function dist-check() {
 ## Check distro
 dist-check
 
-## Start Installation Of PageSpeed
-function install-pagespeed() {
+## Install Google TCP BBR
+function install-bbr() {
   if [ "$DISTRO" == "Ubuntu" ]; then
-      wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
-      sudo dpkg -i mod-pagespeed-*.deb
-      apt-get -f install
-      rm mod-pagespeed-stable_current_amd64.deb
+    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
+    sudo dpkg -i mod-pagespeed-*.deb
+    sudo apt-get -f install
   elif [ "$DISTRO" == "Debian" ]; then
-      wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
-      sudo dpkg -i mod-pagespeed-*.deb
-      apt-get -f install
-      rm mod-pagespeed-stable_current_amd64.deb
+    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
+    sudo dpkg -i mod-pagespeed-*.deb
+    sudo apt-get -f install
   elif [ "$DISTRO" == "Rasbian" ]; then
-      wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
-      sudo dpkg -i mod-pagespeed-*.deb
-      apt-get -f install
-      rm mod-pagespeed-stable_current_amd64.deb
-fi
+    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
+    sudo dpkg -i mod-pagespeed-*.deb
+    sudo apt-get -f install
+  elif [ "$DISTRO" == "CentOS" ]; then
+    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_x86_64.rpm
+    sudo dpkg -i mod-pagespeed-*.deb
+    sudo apt-get -f install
+  elif [ "$DISTRO" == "Fedora" ]; then
+    wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_x86_64.rpm
+    sudo dpkg -i mod-pagespeed-*.deb
+    sudo apt-get -f install
+  fi
 }
 
-## Install Pagespeed
-install-pagespeed
+## Install Google BBR
+install-bbr
 
 ## Restart Apache2
 function apache-restart() {
