@@ -69,6 +69,24 @@ function install-ufw() {
     echo "ufw status numbered" To List
     echo "ufw delete #" To Delete
     echo "ufw reset" To Reset
+  elif [ "$DISTRO" == "Rasbian" ]; then
+    apt-get update
+    apt-get upgrade -y
+    apt-get dist-upgrade -y
+    apt-get install build-essential haveged linux-headers-$(uname -r) ufw -y
+    apt-get autoremove -y
+    apt-get clean -y
+    ufw enable
+    ufw default reject incoming
+    ufw default reject outgoing
+    ufw allow out on wg0
+    ufw allow out 51820/udp #Outgoing
+    ufw allow 51820/udp #Incomming
+    echo "ufw disable" To Disable
+    echo "ufw status verbose" For Status 
+    echo "ufw status numbered" To List
+    echo "ufw delete #" To Delete
+    echo "ufw reset" To Reset
   elif [ "$DISTRO" == "CentOS" ]; then
     yum update -y
     yum install epel-release haveged kernel-devel ufw -y
