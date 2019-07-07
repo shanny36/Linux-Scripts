@@ -81,7 +81,7 @@ elif [ "$DISTRO" == "CentOS" ]; then
     chmod 600 ~/.ssh/authorized_keys
     echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
     echo 'Port 22' >> /etc/ssh/sshd_config
-    sudo /etc/init.d/ssh restart
+    /etc/init.d/ssh restart
 elif [ "$DISTRO" == "Fedora" ]; then
     cd ~
     rm ~/.ssh/authorized_keys
