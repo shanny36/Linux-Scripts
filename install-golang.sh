@@ -31,14 +31,15 @@ function dist-check() {
 ## Check distro
 dist-check
 
+CHECK_ARCHITECTURE=$(dpkg --print-architecture)
+FILE_NAME=$(go1.12.7.linux-$CHECK_ARCHITECTURE.tar.gz)
+
 ## Start Installation
 function install-golang() {
 if [ "$DISTRO" == "Raspbian" ]; then
 cd $HOME
-dpkg --print-architecture
-FileName='https://golang.org/dl/$FileName'
-wget https://dl.google.com/go/$FileName
-sudo tar -C /usr/local -xvf $FileName
+wget https://dl.google.com/go/$FILE_NAME
+sudo tar -C /usr/local -xvf $FILE_NAME
 cat >> ~/.bashrc << 'EOF'
 export GOPATH=$HOME/go
 export PATH=/usr/local/go/bin:$PATH:$GOPATH/bin
