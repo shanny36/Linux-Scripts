@@ -1,16 +1,5 @@
 #!/bin/bash
 
-## Sanity Checks and automagic
-function root-check() {
-if [[ "$EUID" -ne 0 ]]; then
-  echo "Sorry, you need to run this as root"
-  exit
-fi
-}
-
-## Root Check
-root-check
-
 ## Detect Operating System
 function dist-check() {
   if [ -e /etc/centos-release ]; then
