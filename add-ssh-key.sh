@@ -24,77 +24,35 @@ dist-check
 ## Start Installation Of SSH
 function install-ssh() {
 if [ "$DISTRO" == "Debian" ]; then
-    cd ~
-    rm ~/.ssh/authorized_keys
-    pwd
-    mkdir .ssh
-    cd .ssh
-    sudo echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' >> ~/.ssh/authorized_keys
-    sudo chmod 700 ~/.ssh/
-    sudo chmod 600 ~/.ssh/authorized_keys
-    sudo echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
-    sudo echo 'Port 22' >> /etc/ssh/sshd_config
-    sudo /etc/init.d/ssh restart
+    mkdir -p /root/.ssh
+    chmod 600 /root/.ssh
+    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh/authorized_keys
 elif [ "$DISTRO" == "Ubuntu" ]; then
-    cd ~
-    rm ~/.ssh/authorized_keys
-    pwd
-    mkdir .ssh
-    cd .ssh
-    sudo echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' >> ~/.ssh/authorized_keys
-    sudo chmod 700 ~/.ssh/
-    sudo chmod 600 ~/.ssh/authorized_keys
-    sudo echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
-    sudo echo 'Port 22' >> /etc/ssh/sshd_config
-    sudo /etc/init.d/ssh restart
+    mkdir -p /root/.ssh
+    chmod 600 /root/.ssh
+    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh/authorized_keys
 elif [ "$DISTRO" == "Raspbian" ]; then
-    cd ~
-    rm ~/.ssh/authorized_keys
-    pwd
-    mkdir .ssh
-    cd .ssh
-    sudo echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' >> ~/.ssh/authorized_keys
-    sudo chmod 700 ~/.ssh/
-    sudo chmod 600 ~/.ssh/authorized_keys
-    sudo echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
-    sudo echo 'Port 22' >> /etc/ssh/sshd_config
-    sudo /etc/init.d/ssh restart
+    mkdir -p /root/.ssh
+    chmod 600 /root/.ssh
+    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh/authorized_keys
 elif [ "$DISTRO" == "CentOS" ]; then
-    cd ~
-    rm ~/.ssh/authorized_keys
-    pwd
-    mkdir .ssh
-    cd .ssh
-    sudo echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' >> ~/.ssh/authorized_keys
-    sudo chmod 700 ~/.ssh/
-    sudo chmod 600 ~/.ssh/authorized_keys
-    sudo echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
-    sudo echo 'Port 22' >> /etc/ssh/sshd_config
-    sudo /etc/init.d/ssh restart
+    mkdir -p /root/.ssh
+    chmod 600 /root/.ssh
+    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh/authorized_keys
 elif [ "$DISTRO" == "Fedora" ]; then
-    cd ~
-    rm ~/.ssh/authorized_keys
-    pwd
-    mkdir .ssh
-    cd .ssh
-    sudo echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' >> ~/.ssh/authorized_keys
-    sudo chmod 700 ~/.ssh/
-    sudo chmod 600 ~/.ssh/authorized_keys
-    sudo echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
-    sudo echo 'Port 22' >> /etc/ssh/sshd_config
-    sudo /etc/init.d/ssh restart
+    mkdir -p /root/.ssh
+    chmod 600 /root/.ssh
+    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh/authorized_keys
 elif [ "$DISTRO" == "Redhat" ]; then
-    cd ~
-    rm ~/.ssh/authorized_keys
-    pwd
-    mkdir .ssh
-    cd .ssh
-    sudo echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' >> ~/.ssh/authorized_keys
-    sudo chmod 700 ~/.ssh/
-    sudo chmod 600 ~/.ssh/authorized_keys
-    sudo echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
-    sudo echo 'Port 22' >> /etc/ssh/sshd_config
-    sudo /etc/init.d/ssh restart
+    mkdir -p /root/.ssh
+    chmod 600 /root/.ssh
+    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
+    chmod 700 /root/.ssh/authorized_keys
 fi
 }
 
