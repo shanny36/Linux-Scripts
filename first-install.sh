@@ -107,6 +107,9 @@ function ssh-install(){
     chmod 600 /root/.ssh
     echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
     chmod 700 /root/.ssh/authorized_keys
+    sed -i 's|#PasswordAuthentication yes|PasswordAuthentication no|' /etc/ssh/sshd_config
+    sed -i 's|#Port 22|Port 22|' /etc/ssh/sshd_config
+    sudo /etc/init.d/ssh restart
 }
 
 ## Install the SSH keys
