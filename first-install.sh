@@ -30,7 +30,7 @@ if [ "$DISTRO" == "Debian" ]; then
     apt-get upgrade -y
     apt-get dist-upgrade -y
     apt-get upgrade linux-base -y
-    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges fail2ban -y
+    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges fail2ban openssh-server -y
     apt-get clean -y
     apt-get autoremove -y
 elif [ "$DISTRO" == "Ubuntu" ]; then
@@ -38,14 +38,14 @@ elif [ "$DISTRO" == "Ubuntu" ]; then
     apt-get upgrade -y
     apt-get dist-upgrade -y
     apt-get upgrade linux-generic -y
-    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges fail2ban -y
+    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges fail2ban openssh-server -y
     apt-get clean -y
     apt-get autoremove -y
 elif [ "$DISTRO" == "Raspbian" ]; then
     apt-get update
     apt-get upgrade -y
     apt-get dist-upgrade -y
-    apt-get install build-essential raspberrypi-kernel-headers haveged unattended-upgrades apt-listchanges fail2ban -y
+    apt-get install build-essential raspberrypi-kernel-headers haveged unattended-upgrades apt-listchanges fail2ban openssh-server -y
     apt-get clean -y
     apt-get autoremove -y
 fi
