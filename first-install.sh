@@ -23,7 +23,7 @@ function first-install() {
     apt-get dist-upgrade -y
     apt-get upgrade linux-generic -y
     apt-get upgrade linux-base -y
-    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges fail2ban openssh-server -y
+    apt-get install build-essential linux-headers-$(uname -r) haveged unattended-upgrades apt-listchanges -y
     apt-get install raspberrypi-kernel-headers -y
     apt-get clean -y
     apt-get autoremove -y
@@ -56,6 +56,7 @@ tcp-install
 ## Function For SSH Keys
 function ssh-install(){
   if [ "$INSTALL_SSH" == "y" ]; then
+    apt-get install openssh-server fail2ban -y
     mkdir -p /root/.ssh
     chmod 600 /root/.ssh
     echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
