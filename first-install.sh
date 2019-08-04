@@ -11,8 +11,13 @@ fi
 ## Root Check
 root-check
 
+    read -rp "Do You Want To Install Updates (y/n): " -e -i y INSTALL_UPDATES
+    read -rp "Do You Want To Install TCP BBR (y/n): " -e -i y INSTALL_TCPBBR
+    read -rp "Do You Want To Install SSH Key (y/n): " -e -i y INSTALL_SSH
+
 ## First Install
 function first-install() {
+  if [ "$INSTALL_UPDATES" == "y" ]; then
     apt-get update
     apt-get upgrade -y
     apt-get dist-upgrade -y
@@ -22,6 +27,8 @@ function first-install() {
     apt-get install raspberrypi-kernel-headers -y
     apt-get clean -y
     apt-get autoremove -y
+    wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/complexorganizations/unattended-upgrades/master/config/50unattended-upgrades"
+  fi
 }
 
 ## First Install
@@ -29,6 +36,7 @@ first-install
 
 ## Function For TCP BBR
 function tcp-install() {
+  if [ "$INSTALL_TCPBBR" == "y" ]; then
     modprobe tcp_bbr
     echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
     echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf 
@@ -39,21 +47,15 @@ function tcp-install() {
     sysctl net.ipv4.tcp_congestion_control
     sysctl net.core.default_qdisc
     lsmod | grep bbr
+  fi
 }
 
 ## TCP BBR
 tcp-install
 
-## Function To WGET the unattended-upgrades Config
-function wget-config() {
-    wget -q -O /etc/apt/apt.conf.d/50unattended-upgrades "https://raw.githubusercontent.com/complexorganizations/unattended-upgrades/master/config/50unattended-upgrades"
-}
-
-## Run The Function
-wget-config
-
 ## Function For SSH Keys
 function ssh-install(){
+  if [ "$INSTALL_SSH" == "y" ]; then
     mkdir -p /root/.ssh
     chmod 600 /root/.ssh
     echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/authorized_keys
@@ -61,6 +63,7 @@ function ssh-install(){
     sed -i 's|#PasswordAuthentication yes|PasswordAuthentication no|' /etc/ssh/sshd_config
     sed -i 's|#Port 22|Port 22|' /etc/ssh/sshd_config
     sudo /etc/init.d/ssh restart
+  fi
 }
 
 ## Install the SSH keys
