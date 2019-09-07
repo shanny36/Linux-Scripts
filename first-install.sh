@@ -12,7 +12,7 @@ fi
 root-check
 
     read -rp "Do You Want To Install Updates (y/n): " -e -i y INSTALL_UPDATES
-    read -rp "Do You Want To Install TCP BBR (y/n): " -e -i y INSTALL_TCPBBR
+    read -rp "Do You Want To Install TCP BBR (y/n): " -e -i n INSTALL_TCPBBR
     read -rp "Do You Want To Install SSH Key (y/n): " -e -i y INSTALL_SSH
 
 ## First Install
