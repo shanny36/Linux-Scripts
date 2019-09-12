@@ -13,7 +13,8 @@ root-check
 
     read -rp "Do You Want To Install Updates (y/n): " -e -i y INSTALL_UPDATES
     read -rp "Do You Want To Install TCP BBR (y/n): " -e -i n INSTALL_TCPBBR
-    read -rp "Do You Want To Install SSH Key (y/n): " -e -i y INSTALL_SSH
+    read -rp "Do You Want To Install Public SSH Key (y/n): " -e -i n INSTALL_PUBLIC_SSH
+    read -rp "Do You Want To Install Private SSH Key (y/n): " -e -i y INSTALL_PRIVATE_SSH
 
 ## First Install
 function first-install() {
@@ -54,8 +55,8 @@ function tcp-install() {
 tcp-install
 
 ## Function For SSH Keys
-function ssh-install(){
-  if [ "$INSTALL_SSH" == "y" ]; then
+function public-ssh-install(){
+  if [ "$INSTALL_PUBLIC_SSH" == "y" ]; then
     apt-get install openssh-server fail2ban -y
     mkdir -p /root/.ssh
     chmod 600 /root/.ssh
@@ -68,4 +69,21 @@ function ssh-install(){
 }
 
 ## Install the SSH keys
-ssh-install
+public-ssh-install
+
+function private-ssh-install() {
+  if [ "$INSTALL_PRIVATE_SSH" == "y" ]; then
+    read -p 'Private SSH Key: ' PRIVATE_SSH_KEY
+    eval `ssh-agent`
+    mkdir -p /root/.ssh
+    chmod 600 /root/.ssh
+    echo '$PRIVATE_SSH_KEY' > /root/.ssh/id_rsa
+    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/id_rsa.pub
+    chmod 600 /root/.ssh/id_rsa
+    chmod 644 /root/.ssh/id_rsa.pub
+    ssh-add /root/.ssh/id_rsa
+    sudo /etc/init.d/ssh restart
+  fi
+}
+
+private-ssh-install
