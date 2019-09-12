@@ -77,7 +77,11 @@ function private-ssh-install() {
     eval `ssh-agent`
     mkdir -p /root/.ssh
     chmod 600 /root/.ssh
-    echo '$PRIVATE_SSH_KEY' > /root/.ssh/id_rsa
+    echo \
+'-----BEGIN OPENSSH PRIVATE KEY-----
+$PRIVATE_SSH_KEY
+-----END OPENSSH PRIVATE KEY-----' \
+>> /root/.ssh/id_rsa
     echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/id_rsa.pub
     chmod 600 /root/.ssh/id_rsa
     chmod 644 /root/.ssh/id_rsa.pub
