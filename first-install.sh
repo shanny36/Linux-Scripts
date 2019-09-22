@@ -14,7 +14,7 @@ root-check
     read -rp "Do You Want To Install Updates (y/n): " -e -i y INSTALL_UPDATES
     read -rp "Do You Want To Install TCP BBR (y/n): " -e -i n INSTALL_TCPBBR
     read -rp "Do You Want To Install Public SSH Key (y/n): " -e -i n INSTALL_PUBLIC_SSH
-    read -rp "Do You Want To Install Private SSH Key (y/n): " -e -i y INSTALL_PRIVATE_SSH
+    read -rp "Do You Want To Install Private SSH Key (y/n): " -e -i n INSTALL_PRIVATE_SSH
 
 ## First Install
 function first-install() {
