@@ -72,7 +72,6 @@ public-ssh-install
 
 function private-ssh-install() {
   if [ "$INSTALL_PRIVATE_SSH" == "y" ]; then
-    read -p 'Private SSH Key: ' PRIVATE_SSH_KEY
     eval `ssh-agent`
     mkdir -p /root/.ssh
     chmod 600 /root/.ssh
@@ -81,9 +80,7 @@ function private-ssh-install() {
 $PRIVATE_SSH_KEY
 -----END OPENSSH PRIVATE KEY-----' \
 >> /root/.ssh/id_rsa
-    echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJouQKvkIhLoCyE1lPheITbyIB6ZyEOmAY6e5jEhX6B prajwalkoirala23@protonmail.com' > /root/.ssh/id_rsa.pub
     chmod 600 /root/.ssh/id_rsa
-    chmod 644 /root/.ssh/id_rsa.pub
     ssh-add /root/.ssh/id_rsa
     sudo /etc/init.d/ssh restart
   fi
